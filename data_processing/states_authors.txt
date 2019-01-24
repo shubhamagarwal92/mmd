@@ -1,0 +1,77 @@
+Authors (16)
+
+ask_attribute, 10
+buy, 16
+celebrity, 14
+filter_results, 13
+go_with, 9
+show_orientation, 7
+show_similar_to, 8
+sort_results, 12
+suited_for 11
+do_not_like_earlier_show_result, 
+do_not_like_n_show_result,
+do_not_like_show_result,
+like_earlier_show_result,
+like_n_show_result,
+like_show_result,
+show_result,
+
+
+Ours (15)
+
+suited_for - 2 categories
+celebrity - 2 categories
+show_orientation - 2 categories
+ask_attribute - 2 categories
+go_with - 2 categories
+show_similar_to
+filter_results
+sort_results
+buy
+
+# 6 like dislike
+like_earlier_show_result
+like_show_result
+like_n_show_result
+do_not_like_earlier_show_result
+do_not_like_n_show_result
+do_not_like_show_result
+
+greeting
+exit-message
+user-info
+
+
+if state_list[2]=='-':
+	type = state_list[1].split('-')[0]
+
+No show_result
+
+States
+
+  1 user,repeat-question,suited_for
+  2 user,repeat-question,celebrity
+  3 user,repeat-question,show_orientation
+  4 user,question,show_similar_to
+  5 user,question,celebrity
+  6 user,greeting,-
+  7 user,question,like_show_result
+  8 user,exit-message,-
+  9 user,question,like_n_show_result
+ 10 user,question,go_with
+ 11 user,question,suited_for
+ 12 user,user-info,-
+ 13 user,question,do_not_like_show_result
+ 14 user,question,ask_attribute
+ 15 user,question,show_orientation
+ 16 user,question,do_not_like_earlier_show_result
+ 17 user,question,do_not_like_n_show_result
+ 18 user,question,-
+ 19 user,repeat-question,ask_attribute
+ 20 system,answer,-
+ 21 user,repeat-question,go_with
+ 22 user,question,filter_results
+ 23 user,question,like_earlier_show_result
+ 24 user,question,buy
+ 25 user,question,sort_results

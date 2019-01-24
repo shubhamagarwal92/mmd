@@ -1,0 +1,51 @@
+{
+  "training": {
+    "seed": 100,
+    "optimizer": "adam",
+    "clip_grad": 5,
+    "lr": 0.0005,
+    "lr_decay": 0.3,
+    "use_cuda": true,
+    "num_epochs": 30,
+    "save_every": 5,
+    "log_every": 1000,
+    "plot_every": 4,
+    "evaluate_every": 5
+  },
+  "data": {
+    "batch_size": 64,
+    "context_size": 2,
+    "pad_id": 0,
+    "sys_start_id":4,
+    "sys_end_id":5,
+    "unk_id":1,
+    "user_start_id":2,
+    "user_end_id":3,
+    "start_id":2,
+    "end_id":3,
+    "image_rep_size":4096
+  },
+  "model": {
+    "src_emb_dim": 512,
+    "tgt_emb_dim": 512,
+    "enc_hidden_size": 512,
+    "dec_hidden_size": 512,
+    "context_hidden_size": 512,
+    "bidirectional_enc": true,
+    "bidirectional_context": false,
+    "image_in_size": 20480,
+    "num_enc_layers": 1,
+    "num_dec_layers": 1,
+    "num_context_layers": 1,
+    "dropout_enc": 0.8,
+    "dropout_dec": 0.8,
+    "dropout_context": 0.8,
+    "max_decode_len": 20,
+    "enc_type": "GRU",
+    "dec_type": "GRU",
+    "context_type": "GRU",
+    "use_attention": true,
+    "non_linearity": "tanh",
+    "decode_function": "softmax"
+  }
+}
