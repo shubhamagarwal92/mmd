@@ -34,6 +34,8 @@ Download the data set from the [link](https://drive.google.com/drive/folders/1JO
 Run the bash scripts in `data_processing` folder to convert from json transcripts to the actual data for the model.
 Running as `bash dialogue_data.sh` will call the python files in the same folder. Please manipulate the file paths accordingly in the shell script. Run the other shell scripts to extract KB related data for the model.
 
+Alternatively you can also download the data for context of 2 and 5 (as well as pickled Shah et al. data) that we used for training from this [link](https://www.dropbox.com/s/yz31j1zd3vvjwrw/data.zip?dl=0).
+
 ## Training
 
 Run `bash train_and_translate.sh` for training as well as generating on the test set. This script at the end also computes the final metrics on the test set.

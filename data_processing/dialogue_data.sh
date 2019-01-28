@@ -28,7 +28,7 @@ export DATA_VERSION=$DATA_VERSION
 
 export CURRENT_DIR=${PWD}
 export PARENT_DIR="$(dirname "$CURRENT_DIR")"
-export DATA_DIR=$PARENT_DIR/data/
+export DATA_DIR=$PARENT_DIR/data/dataset/$DATA_VERSION
 export OUT_PKL_DIR=$DATA_DIR/dialogue_data/context_${CONTEXT_SIZE}_${MAX_LEN}
 
 echo "Creating dataset in: "
