@@ -69,13 +69,14 @@ class MultimodalHRED(nn.Module):
 		# Default to hidden_size = dec_hidden_size for now. 
 		self.kb_emb_size = self.tgt_emb_dim
 		self.kb_hidden_size = self.dec_hidden_size
-		self.kb_encoder = KbEncoder(self.kb_size, self.kb_emb_size, self.kb_hidden_size, 
-			                rnn_type='GRU', num_layers=1, batch_first=True,
-			                dropout=0, bidirectional=False)
-		# Same for kb and celebs for now.
-		self.celeb_encoder = KbEncoder(self.celeb_vec_size, self.kb_emb_size, self.kb_hidden_size, 
-			                rnn_type='GRU', num_layers=1, batch_first=True,
-			                dropout=0, bidirectional=False)
+		if self.use_kb:
+			self.kb_encoder = KbEncoder(self.kb_size, self.kb_emb_size, self.kb_hidden_size,
+			                	rnn_type='GRU', num_layers=1, batch_first=True,
+			                	dropout=0, bidirectional=False)
+			# Same for kb and celebs for now.
+			self.celeb_encoder = KbEncoder(self.celeb_vec_size, self.kb_emb_size, self.kb_hidden_size,
+			                	rnn_type='GRU', num_layers=1, batch_first=True,
+			                	dropout=0, bidirectional=False)
 
 		# Initialize encoder
 		self.encoder = EncoderRNN(self.src_vocab_size, self.src_emb_dim, self.enc_hidden_size, 
@@ -84,7 +85,8 @@ class MultimodalHRED(nn.Module):
 		self.image_encoder = ImageEncoder(self.image_in_size, self.image_out_size)
 		# Initialize bridge layer 
 		self.activation_bridge = activation_bridge
-		self.bridge = BridgeLayer(self.enc_hidden_size, self.dec_hidden_size, self.activation_bridge)
+		# self.bridge = BridgeLayer(self.enc_hidden_size, self.dec_hidden_size, self.activation_bridge)
+		self.bridge = BridgeLayer(self.enc_hidden_size, self.dec_hidden_size)
 		# Initialize context encoder
 		self.context_input_size = self.image_out_size + enc_hidden_size # image+text
 		self.context_encoder = ContextRNN(self.context_input_size, self.context_hidden_size, 
@@ -240,13 +242,14 @@ class HRED(nn.Module):
 		# Default to hidden_size = dec_hidden_size for now. 
 		self.kb_emb_size = self.tgt_emb_dim
 		self.kb_hidden_size = self.dec_hidden_size
-		self.kb_encoder = KbEncoder(self.kb_size, self.kb_emb_size, self.kb_hidden_size, 
-			                rnn_type='GRU', num_layers=1, batch_first=True,
-			                dropout=0, bidirectional=False)
-		# Same for kb and celebs for now.
-		self.celeb_encoder = KbEncoder(self.celeb_vec_size, self.kb_emb_size, self.kb_hidden_size, 
-			                rnn_type='GRU', num_layers=1, batch_first=True,
-			                dropout=0, bidirectional=False)
+		if self.use_kb:
+			self.kb_encoder = KbEncoder(self.kb_size, self.kb_emb_size, self.kb_hidden_size,
+				                rnn_type='GRU', num_layers=1, batch_first=True,
+			    	            dropout=0, bidirectional=False)
+			# Same for kb and celebs for now.
+			self.celeb_encoder = KbEncoder(self.celeb_vec_size, self.kb_emb_size, self.kb_hidden_size,
+				                rnn_type='GRU', num_layers=1, batch_first=True,
+			    	            dropout=0, bidirectional=False)
 
 
 		# Initialize encoder
@@ -256,7 +259,8 @@ class HRED(nn.Module):
 		# self.image_encoder = ImageEncoder(self.image_in_size, self.image_out_size)
 		# Initialize bridge layer 
 		self.activation_bridge = activation_bridge
-		self.bridge = BridgeLayer(self.enc_hidden_size, self.dec_hidden_size, self.activation_bridge)
+		# self.bridge = BridgeLayer(self.enc_hidden_size, self.dec_hidden_size, self.activation_bridge)
+		self.bridge = BridgeLayer(self.enc_hidden_size, self.dec_hidden_size)
 		# Initialize context encoder
 		self.context_input_size = enc_hidden_size #self.image_out_size + enc_hidden_size # image+text
 		self.context_encoder = ContextRNN(self.context_input_size, self.context_hidden_size, 
