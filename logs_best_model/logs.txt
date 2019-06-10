@@ -1,0 +1,379 @@
+{u'training': {u'plot_every': 4, u'clip_grad': 3, u'evaluate_every': 2, u'log_every': 1000, u'save_every': 1, u'seed': 100, u'lr': 0.0004, u'use_cuda': True, u'num_epochs': 15, u'optimizer': u'adam', u'lr_decay': 0}, u'data': {u'sys_end_id': 5, u'unk_id': 1, u'end_id': 3, u'sys_start_id': 4, u'start_id': 2, u'user_start_id': 2, u'batch_size': 64, u'image_rep_size': 4096, u'context_size': 2, u'user_end_id': 3, u'pad_id': 0}, u'model': {u'non_linearity': u'tanh', u'decode_function': u'softmax', u'src_emb_dim': 512, u'bidirectional_context': False, u'dropout_context': 0.3, u'dec_type': u'GRU', u'context_type': u'GRU', u'num_enc_layers': 1, u'dropout_dec': 0.3, u'tgt_emb_dim': 512, u'max_decode_len': 20, u'bidirectional_enc': True, u'dropout_enc': 0.3, u'num_dec_layers': 1, u'enc_type': u'GRU', u'dec_hidden_size': 512, u'context_hidden_size': 512, u'use_attention': True, u'image_in_size': 20480, u'num_context_layers': 1, u'enc_hidden_size': 512}}
+kb_encoder.embedding.weight
+kb_encoder.encoder.weight_ih_l0
+kb_encoder.encoder.weight_hh_l0
+kb_encoder.encoder.bias_ih_l0
+kb_encoder.encoder.bias_hh_l0
+celeb_encoder.embedding.weight
+celeb_encoder.encoder.weight_ih_l0
+celeb_encoder.encoder.weight_hh_l0
+celeb_encoder.encoder.bias_ih_l0
+celeb_encoder.encoder.bias_hh_l0
+encoder.embedding.weight
+encoder.encoder.weight_ih_l0
+encoder.encoder.weight_hh_l0
+encoder.encoder.bias_ih_l0
+encoder.encoder.bias_hh_l0
+encoder.encoder.weight_ih_l0_reverse
+encoder.encoder.weight_hh_l0_reverse
+encoder.encoder.bias_ih_l0_reverse
+encoder.encoder.bias_hh_l0_reverse
+image_encoder.image_proj_layer.weight
+bridge.proj_layer.weight
+bridge.proj_layer.bias
+context_encoder.contextRNN.weight_ih_l0
+context_encoder.contextRNN.weight_hh_l0
+context_encoder.contextRNN.bias_ih_l0
+context_encoder.contextRNN.bias_hh_l0
+decoder.rnncell.weight_ih_l0
+decoder.rnncell.weight_hh_l0
+decoder.rnncell.bias_ih_l0
+decoder.rnncell.bias_hh_l0
+decoder.attention.linear_attn.weight
+decoder.out.weight
+decoder.out.bias
+MultimodalHRED(
+  (kb_encoder): KbEncoder(
+    (embedding): Embedding(10296, 512)
+    (encoder): GRU(512, 512, batch_first=True)
+  )
+  (celeb_encoder): KbEncoder(
+    (embedding): Embedding(318, 512)
+    (encoder): GRU(512, 512, batch_first=True)
+  )
+  (encoder): EncoderRNN(
+    (embedding): Embedding(7452, 512)
+    (encoder): GRU(512, 256, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (image_encoder): ImageEncoder(
+    (image_proj_layer): Linear(in_features=20480, out_features=512, bias=False)
+  )
+  (bridge): BridgeLayer(
+    (proj_layer): Linear(in_features=256, out_features=512, bias=True)
+  )
+  (context_encoder): ContextRNN(
+    (contextRNN): GRU(1024, 512, batch_first=True, dropout=0.3)
+  )
+  (decoder): DecoderRNN(
+    (embedding): Embedding(7452, 512)
+    (rnncell): GRU(2048, 512, batch_first=True, dropout=0.3)
+    (attention): AttentionLayer(
+      (linear_attn): Linear(in_features=1024, out_features=512, bias=False)
+      (normalize): Softmax()
+      (non_linearity): Tanh()
+    )
+    (out): Linear(in_features=512, out_features=7452, bias=True)
+    (softmax): Softmax()
+    (sigmoid): Sigmoid()
+  )
+)
+Batch Loss: Epoch [1], Batch [1000], Loss: 0.001669, Perplexity: 1.00167, Batch Time:0.0065
+Batch Loss: Epoch [1], Batch [2000], Loss: 0.001017, Perplexity: 1.00102, Batch Time:0.0065
+Batch Loss: Epoch [1], Batch [3000], Loss: 0.001307, Perplexity: 1.00131, Batch Time:0.0064
+Batch Loss: Epoch [1], Batch [4000], Loss: 0.001466, Perplexity: 1.00147, Batch Time:0.0062
+Batch Loss: Epoch [1], Batch [5000], Loss: 0.000956, Perplexity: 1.00096, Batch Time:0.0077
+Batch Loss: Epoch [1], Batch [6000], Loss: 0.001250, Perplexity: 1.00125, Batch Time:0.0064
+Batch Loss: Epoch [1], Batch [7000], Loss: 0.001098, Perplexity: 1.00110, Batch Time:0.0070
+Batch Loss: Epoch [1], Batch [8000], Loss: 0.000873, Perplexity: 1.00087, Batch Time:0.0067
+Batch Loss: Epoch [1], Batch [9000], Loss: 0.000995, Perplexity: 1.00100, Batch Time:0.0068
+Batch Loss: Epoch [1], Batch [10000], Loss: 0.000859, Perplexity: 1.00086, Batch Time:0.0064
+Batch Loss: Epoch [1], Batch [11000], Loss: 0.001183, Perplexity: 1.00118, Batch Time:0.0065
+Batch Loss: Epoch [1], Batch [12000], Loss: 0.000963, Perplexity: 1.00096, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [13000], Loss: 0.000859, Perplexity: 1.00086, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [14000], Loss: 0.000990, Perplexity: 1.00099, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [15000], Loss: 0.001007, Perplexity: 1.00101, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [16000], Loss: 0.001002, Perplexity: 1.00100, Batch Time:0.0061
+Batch Loss: Epoch [1], Batch [17000], Loss: 0.000958, Perplexity: 1.00096, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [18000], Loss: 0.000867, Perplexity: 1.00087, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [19000], Loss: 0.001028, Perplexity: 1.00103, Batch Time:0.0061
+Batch Loss: Epoch [1], Batch [20000], Loss: 0.001197, Perplexity: 1.00120, Batch Time:0.0063
+Batch Loss: Epoch [1], Batch [21000], Loss: 0.000663, Perplexity: 1.00066, Batch Time:0.0064
+Batch Loss: Epoch [1], Batch [22000], Loss: 0.000817, Perplexity: 1.00082, Batch Time:0.0062
+Batch Loss: Epoch [1], Batch [23000], Loss: 0.001207, Perplexity: 1.00121, Batch Time:0.0063
+Epoch Loss: Epoch [1], Loss: 0.001079, Perplexity: 1.00108, Epoch Time:9348.0626
+Batch Loss: Epoch [2], Batch [1000], Loss: 0.000987, Perplexity: 1.00099, Batch Time:0.0063
+Batch Loss: Epoch [2], Batch [2000], Loss: 0.000724, Perplexity: 1.00072, Batch Time:0.0065
+Batch Loss: Epoch [2], Batch [3000], Loss: 0.000911, Perplexity: 1.00091, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [4000], Loss: 0.001154, Perplexity: 1.00115, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [5000], Loss: 0.000827, Perplexity: 1.00083, Batch Time:0.0064
+Batch Loss: Epoch [2], Batch [6000], Loss: 0.001075, Perplexity: 1.00108, Batch Time:0.0066
+Batch Loss: Epoch [2], Batch [7000], Loss: 0.000992, Perplexity: 1.00099, Batch Time:0.0063
+Batch Loss: Epoch [2], Batch [8000], Loss: 0.000770, Perplexity: 1.00077, Batch Time:0.0063
+Batch Loss: Epoch [2], Batch [9000], Loss: 0.000876, Perplexity: 1.00088, Batch Time:0.0063
+Batch Loss: Epoch [2], Batch [10000], Loss: 0.000764, Perplexity: 1.00076, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [11000], Loss: 0.001019, Perplexity: 1.00102, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [12000], Loss: 0.000897, Perplexity: 1.00090, Batch Time:0.0060
+Batch Loss: Epoch [2], Batch [13000], Loss: 0.000787, Perplexity: 1.00079, Batch Time:0.0059
+Batch Loss: Epoch [2], Batch [14000], Loss: 0.000896, Perplexity: 1.00090, Batch Time:0.0061
+Batch Loss: Epoch [2], Batch [15000], Loss: 0.000934, Perplexity: 1.00093, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [16000], Loss: 0.000915, Perplexity: 1.00091, Batch Time:0.0063
+Batch Loss: Epoch [2], Batch [17000], Loss: 0.000860, Perplexity: 1.00086, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [18000], Loss: 0.000801, Perplexity: 1.00080, Batch Time:0.0079
+Batch Loss: Epoch [2], Batch [19000], Loss: 0.000930, Perplexity: 1.00093, Batch Time:0.0061
+Batch Loss: Epoch [2], Batch [20000], Loss: 0.001126, Perplexity: 1.00113, Batch Time:0.0062
+Batch Loss: Epoch [2], Batch [21000], Loss: 0.000644, Perplexity: 1.00064, Batch Time:0.0064
+Batch Loss: Epoch [2], Batch [22000], Loss: 0.000796, Perplexity: 1.00080, Batch Time:0.0060
+Batch Loss: Epoch [2], Batch [23000], Loss: 0.001140, Perplexity: 1.00114, Batch Time:0.0064
+Epoch Loss: Epoch [2], Loss: 0.000892, Perplexity: 1.00089, Epoch Time:8959.6552
+
+Evaluation:
+Valid Loss: Loss: 0.000884, Perplexity: 1.0009, Run Time:25.8928
+
+Batch Loss: Epoch [3], Batch [1000], Loss: 0.000925, Perplexity: 1.00093, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [2000], Loss: 0.000710, Perplexity: 1.00071, Batch Time:0.0059
+Batch Loss: Epoch [3], Batch [3000], Loss: 0.000839, Perplexity: 1.00084, Batch Time:0.0061
+Batch Loss: Epoch [3], Batch [4000], Loss: 0.001088, Perplexity: 1.00109, Batch Time:0.0059
+Batch Loss: Epoch [3], Batch [5000], Loss: 0.000776, Perplexity: 1.00078, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [6000], Loss: 0.001001, Perplexity: 1.00100, Batch Time:0.0062
+Batch Loss: Epoch [3], Batch [7000], Loss: 0.000924, Perplexity: 1.00092, Batch Time:0.0062
+Batch Loss: Epoch [3], Batch [8000], Loss: 0.000719, Perplexity: 1.00072, Batch Time:0.0062
+Batch Loss: Epoch [3], Batch [9000], Loss: 0.000823, Perplexity: 1.00082, Batch Time:0.0058
+Batch Loss: Epoch [3], Batch [10000], Loss: 0.000713, Perplexity: 1.00071, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [11000], Loss: 0.000965, Perplexity: 1.00097, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [12000], Loss: 0.000856, Perplexity: 1.00086, Batch Time:0.0061
+Batch Loss: Epoch [3], Batch [13000], Loss: 0.000788, Perplexity: 1.00079, Batch Time:0.0062
+Batch Loss: Epoch [3], Batch [14000], Loss: 0.000878, Perplexity: 1.00088, Batch Time:0.0065
+Batch Loss: Epoch [3], Batch [15000], Loss: 0.000874, Perplexity: 1.00087, Batch Time:0.0059
+Batch Loss: Epoch [3], Batch [16000], Loss: 0.000909, Perplexity: 1.00091, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [17000], Loss: 0.000850, Perplexity: 1.00085, Batch Time:0.0076
+Batch Loss: Epoch [3], Batch [18000], Loss: 0.000766, Perplexity: 1.00077, Batch Time:0.0061
+Batch Loss: Epoch [3], Batch [19000], Loss: 0.000922, Perplexity: 1.00092, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [20000], Loss: 0.001116, Perplexity: 1.00112, Batch Time:0.0060
+Batch Loss: Epoch [3], Batch [21000], Loss: 0.000610, Perplexity: 1.00061, Batch Time:0.0062
+Batch Loss: Epoch [3], Batch [22000], Loss: 0.000758, Perplexity: 1.00076, Batch Time:0.0059
+Batch Loss: Epoch [3], Batch [23000], Loss: 0.001092, Perplexity: 1.00109, Batch Time:0.0060
+Epoch Loss: Epoch [3], Loss: 0.000853, Perplexity: 1.00085, Epoch Time:8662.7288
+Batch Loss: Epoch [4], Batch [1000], Loss: 0.000887, Perplexity: 1.00089, Batch Time:0.0061
+Batch Loss: Epoch [4], Batch [2000], Loss: 0.000690, Perplexity: 1.00069, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [3000], Loss: 0.000835, Perplexity: 1.00084, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [4000], Loss: 0.001061, Perplexity: 1.00106, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [5000], Loss: 0.000742, Perplexity: 1.00074, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [6000], Loss: 0.000964, Perplexity: 1.00096, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [7000], Loss: 0.000927, Perplexity: 1.00093, Batch Time:0.0062
+Batch Loss: Epoch [4], Batch [8000], Loss: 0.000701, Perplexity: 1.00070, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [9000], Loss: 0.000817, Perplexity: 1.00082, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [10000], Loss: 0.000688, Perplexity: 1.00069, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [11000], Loss: 0.000948, Perplexity: 1.00095, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [12000], Loss: 0.000871, Perplexity: 1.00087, Batch Time:0.0059
+Batch Loss: Epoch [4], Batch [13000], Loss: 0.000730, Perplexity: 1.00073, Batch Time:0.0061
+Batch Loss: Epoch [4], Batch [14000], Loss: 0.000827, Perplexity: 1.00083, Batch Time:0.0062
+Batch Loss: Epoch [4], Batch [15000], Loss: 0.000865, Perplexity: 1.00087, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [16000], Loss: 0.000896, Perplexity: 1.00090, Batch Time:0.0075
+Batch Loss: Epoch [4], Batch [17000], Loss: 0.000788, Perplexity: 1.00079, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [18000], Loss: 0.000760, Perplexity: 1.00076, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [19000], Loss: 0.000931, Perplexity: 1.00093, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [20000], Loss: 0.001107, Perplexity: 1.00111, Batch Time:0.0061
+Batch Loss: Epoch [4], Batch [21000], Loss: 0.000626, Perplexity: 1.00063, Batch Time:0.0061
+Batch Loss: Epoch [4], Batch [22000], Loss: 0.000752, Perplexity: 1.00075, Batch Time:0.0060
+Batch Loss: Epoch [4], Batch [23000], Loss: 0.001108, Perplexity: 1.00111, Batch Time:0.0063
+Epoch Loss: Epoch [4], Loss: 0.000830, Perplexity: 1.00083, Epoch Time:8673.9337
+
+Evaluation:
+Valid Loss: Loss: 0.000862, Perplexity: 1.0009, Run Time:26.0364
+
+Batch Loss: Epoch [5], Batch [1000], Loss: 0.000823, Perplexity: 1.00082, Batch Time:0.0076
+Batch Loss: Epoch [5], Batch [2000], Loss: 0.000686, Perplexity: 1.00069, Batch Time:0.0077
+Batch Loss: Epoch [5], Batch [3000], Loss: 0.000800, Perplexity: 1.00080, Batch Time:0.0062
+Batch Loss: Epoch [5], Batch [4000], Loss: 0.001028, Perplexity: 1.00103, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [5000], Loss: 0.000747, Perplexity: 1.00075, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [6000], Loss: 0.000967, Perplexity: 1.00097, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [7000], Loss: 0.000896, Perplexity: 1.00090, Batch Time:0.0059
+Batch Loss: Epoch [5], Batch [8000], Loss: 0.000695, Perplexity: 1.00070, Batch Time:0.0061
+Batch Loss: Epoch [5], Batch [9000], Loss: 0.000818, Perplexity: 1.00082, Batch Time:0.0058
+Batch Loss: Epoch [5], Batch [10000], Loss: 0.000695, Perplexity: 1.00070, Batch Time:0.0059
+Batch Loss: Epoch [5], Batch [11000], Loss: 0.000949, Perplexity: 1.00095, Batch Time:0.0059
+Batch Loss: Epoch [5], Batch [12000], Loss: 0.000857, Perplexity: 1.00086, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [13000], Loss: 0.000731, Perplexity: 1.00073, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [14000], Loss: 0.000799, Perplexity: 1.00080, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [15000], Loss: 0.000847, Perplexity: 1.00085, Batch Time:0.0063
+Batch Loss: Epoch [5], Batch [16000], Loss: 0.000875, Perplexity: 1.00088, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [17000], Loss: 0.000791, Perplexity: 1.00079, Batch Time:0.0058
+Batch Loss: Epoch [5], Batch [18000], Loss: 0.000730, Perplexity: 1.00073, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [19000], Loss: 0.000890, Perplexity: 1.00089, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [20000], Loss: 0.001098, Perplexity: 1.00110, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [21000], Loss: 0.000617, Perplexity: 1.00062, Batch Time:0.0062
+Batch Loss: Epoch [5], Batch [22000], Loss: 0.000745, Perplexity: 1.00075, Batch Time:0.0060
+Batch Loss: Epoch [5], Batch [23000], Loss: 0.001072, Perplexity: 1.00107, Batch Time:0.0061
+Epoch Loss: Epoch [5], Loss: 0.000815, Perplexity: 1.00082, Epoch Time:8682.5362
+Batch Loss: Epoch [6], Batch [1000], Loss: 0.000839, Perplexity: 1.00084, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [2000], Loss: 0.000644, Perplexity: 1.00064, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [3000], Loss: 0.000846, Perplexity: 1.00085, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [4000], Loss: 0.001037, Perplexity: 1.00104, Batch Time:0.0058
+Batch Loss: Epoch [6], Batch [5000], Loss: 0.000701, Perplexity: 1.00070, Batch Time:0.0058
+Batch Loss: Epoch [6], Batch [6000], Loss: 0.000914, Perplexity: 1.00091, Batch Time:0.0061
+Batch Loss: Epoch [6], Batch [7000], Loss: 0.000883, Perplexity: 1.00088, Batch Time:0.0064
+Batch Loss: Epoch [6], Batch [8000], Loss: 0.000691, Perplexity: 1.00069, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [9000], Loss: 0.000798, Perplexity: 1.00080, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [10000], Loss: 0.000679, Perplexity: 1.00068, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [11000], Loss: 0.000923, Perplexity: 1.00092, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [12000], Loss: 0.000855, Perplexity: 1.00086, Batch Time:0.0059
+Batch Loss: Epoch [6], Batch [13000], Loss: 0.000729, Perplexity: 1.00073, Batch Time:0.0061
+Batch Loss: Epoch [6], Batch [14000], Loss: 0.000795, Perplexity: 1.00079, Batch Time:0.0075
+Batch Loss: Epoch [6], Batch [15000], Loss: 0.000800, Perplexity: 1.00080, Batch Time:0.0060
+Batch Loss: Epoch [6], Batch [16000], Loss: 0.000883, Perplexity: 1.00088, Batch Time:0.0060
+Batch Loss: Epoch [6], Batch [17000], Loss: 0.000772, Perplexity: 1.00077, Batch Time:0.0060
+Batch Loss: Epoch [6], Batch [18000], Loss: 0.000701, Perplexity: 1.00070, Batch Time:0.0060
+Batch Loss: Epoch [6], Batch [19000], Loss: 0.000900, Perplexity: 1.00090, Batch Time:0.0066
+Batch Loss: Epoch [6], Batch [20000], Loss: 0.001059, Perplexity: 1.00106, Batch Time:0.0067
+Batch Loss: Epoch [6], Batch [21000], Loss: 0.000613, Perplexity: 1.00061, Batch Time:0.0066
+Batch Loss: Epoch [6], Batch [22000], Loss: 0.000748, Perplexity: 1.00075, Batch Time:0.0066
+Batch Loss: Epoch [6], Batch [23000], Loss: 0.001052, Perplexity: 1.00105, Batch Time:0.0072
+Epoch Loss: Epoch [6], Loss: 0.000805, Perplexity: 1.00081, Epoch Time:8887.8715
+
+Evaluation:
+Valid Loss: Loss: 0.000860, Perplexity: 1.0009, Run Time:30.5487
+
+Batch Loss: Epoch [7], Batch [1000], Loss: 0.000810, Perplexity: 1.00081, Batch Time:0.0065
+Batch Loss: Epoch [7], Batch [2000], Loss: 0.000630, Perplexity: 1.00063, Batch Time:0.0069
+Batch Loss: Epoch [7], Batch [3000], Loss: 0.000765, Perplexity: 1.00077, Batch Time:0.0065
+Batch Loss: Epoch [7], Batch [4000], Loss: 0.001033, Perplexity: 1.00103, Batch Time:0.0059
+Batch Loss: Epoch [7], Batch [5000], Loss: 0.000731, Perplexity: 1.00073, Batch Time:0.0059
+Batch Loss: Epoch [7], Batch [6000], Loss: 0.000906, Perplexity: 1.00091, Batch Time:0.0061
+Batch Loss: Epoch [7], Batch [7000], Loss: 0.000891, Perplexity: 1.00089, Batch Time:0.0079
+Batch Loss: Epoch [7], Batch [8000], Loss: 0.000705, Perplexity: 1.00070, Batch Time:0.0060
+Batch Loss: Epoch [7], Batch [9000], Loss: 0.000816, Perplexity: 1.00082, Batch Time:0.0062
+Batch Loss: Epoch [7], Batch [10000], Loss: 0.000690, Perplexity: 1.00069, Batch Time:0.0060
+Batch Loss: Epoch [7], Batch [11000], Loss: 0.000891, Perplexity: 1.00089, Batch Time:0.0061
+Batch Loss: Epoch [7], Batch [12000], Loss: 0.000848, Perplexity: 1.00085, Batch Time:0.0061
+Batch Loss: Epoch [7], Batch [13000], Loss: 0.000689, Perplexity: 1.00069, Batch Time:0.0065
+Batch Loss: Epoch [7], Batch [14000], Loss: 0.000798, Perplexity: 1.00080, Batch Time:0.0061
+Batch Loss: Epoch [7], Batch [15000], Loss: 0.000852, Perplexity: 1.00085, Batch Time:0.0060
+Batch Loss: Epoch [7], Batch [16000], Loss: 0.000869, Perplexity: 1.00087, Batch Time:0.0063
+Batch Loss: Epoch [7], Batch [17000], Loss: 0.000800, Perplexity: 1.00080, Batch Time:0.0059
+Batch Loss: Epoch [7], Batch [18000], Loss: 0.000680, Perplexity: 1.00068, Batch Time:0.0062
+Batch Loss: Epoch [7], Batch [19000], Loss: 0.000908, Perplexity: 1.00091, Batch Time:0.0061
+Batch Loss: Epoch [7], Batch [20000], Loss: 0.001047, Perplexity: 1.00105, Batch Time:0.0063
+Batch Loss: Epoch [7], Batch [21000], Loss: 0.000633, Perplexity: 1.00063, Batch Time:0.0071
+Batch Loss: Epoch [7], Batch [22000], Loss: 0.000748, Perplexity: 1.00075, Batch Time:0.0065
+Batch Loss: Epoch [7], Batch [23000], Loss: 0.001046, Perplexity: 1.00105, Batch Time:0.0066
+Epoch Loss: Epoch [7], Loss: 0.000800, Perplexity: 1.00080, Epoch Time:9125.5069
+Batch Loss: Epoch [8], Batch [1000], Loss: 0.000779, Perplexity: 1.00078, Batch Time:0.0060
+Batch Loss: Epoch [8], Batch [2000], Loss: 0.000642, Perplexity: 1.00064, Batch Time:0.0062
+Batch Loss: Epoch [8], Batch [3000], Loss: 0.000756, Perplexity: 1.00076, Batch Time:0.0062
+Batch Loss: Epoch [8], Batch [4000], Loss: 0.001030, Perplexity: 1.00103, Batch Time:0.0060
+Batch Loss: Epoch [8], Batch [5000], Loss: 0.000697, Perplexity: 1.00070, Batch Time:0.0060
+Batch Loss: Epoch [8], Batch [6000], Loss: 0.000904, Perplexity: 1.00090, Batch Time:0.0060
+Batch Loss: Epoch [8], Batch [7000], Loss: 0.000886, Perplexity: 1.00089, Batch Time:0.0061
+Batch Loss: Epoch [8], Batch [8000], Loss: 0.000663, Perplexity: 1.00066, Batch Time:0.0061
+Batch Loss: Epoch [8], Batch [9000], Loss: 0.000785, Perplexity: 1.00079, Batch Time:0.0062
+Batch Loss: Epoch [8], Batch [10000], Loss: 0.000686, Perplexity: 1.00069, Batch Time:0.0062
+Batch Loss: Epoch [8], Batch [11000], Loss: 0.000881, Perplexity: 1.00088, Batch Time:0.0060
+Batch Loss: Epoch [8], Batch [12000], Loss: 0.000838, Perplexity: 1.00084, Batch Time:0.0062
+Batch Loss: Epoch [8], Batch [13000], Loss: 0.000743, Perplexity: 1.00074, Batch Time:0.0061
+Batch Loss: Epoch [8], Batch [14000], Loss: 0.000788, Perplexity: 1.00079, Batch Time:0.0061
+Batch Loss: Epoch [8], Batch [15000], Loss: 0.000860, Perplexity: 1.00086, Batch Time:0.0059
+Batch Loss: Epoch [8], Batch [16000], Loss: 0.000884, Perplexity: 1.00088, Batch Time:0.0064
+Batch Loss: Epoch [8], Batch [17000], Loss: 0.000750, Perplexity: 1.00075, Batch Time:0.0064
+Batch Loss: Epoch [8], Batch [18000], Loss: 0.000682, Perplexity: 1.00068, Batch Time:0.0068
+Batch Loss: Epoch [8], Batch [19000], Loss: 0.000900, Perplexity: 1.00090, Batch Time:0.0065
+Batch Loss: Epoch [8], Batch [20000], Loss: 0.001056, Perplexity: 1.00106, Batch Time:0.0067
+Batch Loss: Epoch [8], Batch [21000], Loss: 0.000598, Perplexity: 1.00060, Batch Time:0.0065
+Batch Loss: Epoch [8], Batch [22000], Loss: 0.000747, Perplexity: 1.00075, Batch Time:0.0075
+Batch Loss: Epoch [8], Batch [23000], Loss: 0.001053, Perplexity: 1.00105, Batch Time:0.0066
+Epoch Loss: Epoch [8], Loss: 0.000796, Perplexity: 1.00080, Epoch Time:9096.7244
+
+Evaluation:
+Valid Loss: Loss: 0.000863, Perplexity: 1.0009, Run Time:30.9330
+
+Batch Loss: Epoch [9], Batch [1000], Loss: 0.000790, Perplexity: 1.00079, Batch Time:0.0066
+Batch Loss: Epoch [9], Batch [2000], Loss: 0.000667, Perplexity: 1.00067, Batch Time:0.0065
+Batch Loss: Epoch [9], Batch [3000], Loss: 0.000788, Perplexity: 1.00079, Batch Time:0.0069
+Batch Loss: Epoch [9], Batch [4000], Loss: 0.000973, Perplexity: 1.00097, Batch Time:0.0060
+Batch Loss: Epoch [9], Batch [5000], Loss: 0.000703, Perplexity: 1.00070, Batch Time:0.0069
+Batch Loss: Epoch [9], Batch [6000], Loss: 0.000885, Perplexity: 1.00089, Batch Time:0.0068
+Batch Loss: Epoch [9], Batch [7000], Loss: 0.000848, Perplexity: 1.00085, Batch Time:0.0068
+Batch Loss: Epoch [9], Batch [8000], Loss: 0.000683, Perplexity: 1.00068, Batch Time:0.0070
+Batch Loss: Epoch [9], Batch [9000], Loss: 0.000814, Perplexity: 1.00081, Batch Time:0.0067
+Batch Loss: Epoch [9], Batch [10000], Loss: 0.000658, Perplexity: 1.00066, Batch Time:0.0089
+Batch Loss: Epoch [9], Batch [11000], Loss: 0.000876, Perplexity: 1.00088, Batch Time:0.0068
+Batch Loss: Epoch [9], Batch [12000], Loss: 0.000799, Perplexity: 1.00080, Batch Time:0.0070
+Batch Loss: Epoch [9], Batch [13000], Loss: 0.000746, Perplexity: 1.00075, Batch Time:0.0067
+Batch Loss: Epoch [9], Batch [14000], Loss: 0.000791, Perplexity: 1.00079, Batch Time:0.0089
+Batch Loss: Epoch [9], Batch [15000], Loss: 0.000866, Perplexity: 1.00087, Batch Time:0.0063
+Batch Loss: Epoch [9], Batch [16000], Loss: 0.000899, Perplexity: 1.00090, Batch Time:0.0070
+Batch Loss: Epoch [9], Batch [17000], Loss: 0.000763, Perplexity: 1.00076, Batch Time:0.0067
+Batch Loss: Epoch [9], Batch [18000], Loss: 0.000658, Perplexity: 1.00066, Batch Time:0.0066
+Batch Loss: Epoch [9], Batch [19000], Loss: 0.000897, Perplexity: 1.00090, Batch Time:0.0081
+Batch Loss: Epoch [9], Batch [20000], Loss: 0.001034, Perplexity: 1.00103, Batch Time:0.0064
+Batch Loss: Epoch [9], Batch [21000], Loss: 0.000599, Perplexity: 1.00060, Batch Time:0.0071
+Batch Loss: Epoch [9], Batch [22000], Loss: 0.000742, Perplexity: 1.00074, Batch Time:0.0078
+Batch Loss: Epoch [9], Batch [23000], Loss: 0.001070, Perplexity: 1.00107, Batch Time:0.0062
+Epoch Loss: Epoch [9], Loss: 0.000796, Perplexity: 1.00080, Epoch Time:9822.9382
+Batch Loss: Epoch [10], Batch [1000], Loss: 0.000806, Perplexity: 1.00081, Batch Time:0.0070
+Batch Loss: Epoch [10], Batch [2000], Loss: 0.000647, Perplexity: 1.00065, Batch Time:0.0066
+Batch Loss: Epoch [10], Batch [3000], Loss: 0.000790, Perplexity: 1.00079, Batch Time:0.0084
+Batch Loss: Epoch [10], Batch [4000], Loss: 0.000997, Perplexity: 1.00100, Batch Time:0.0071
+Batch Loss: Epoch [10], Batch [5000], Loss: 0.000726, Perplexity: 1.00073, Batch Time:0.0061
+Batch Loss: Epoch [10], Batch [6000], Loss: 0.000904, Perplexity: 1.00090, Batch Time:0.0064
+Batch Loss: Epoch [10], Batch [7000], Loss: 0.000876, Perplexity: 1.00088, Batch Time:0.0061
+Batch Loss: Epoch [10], Batch [8000], Loss: 0.000692, Perplexity: 1.00069, Batch Time:0.0063
+Batch Loss: Epoch [10], Batch [9000], Loss: 0.000799, Perplexity: 1.00080, Batch Time:0.0062
+Batch Loss: Epoch [10], Batch [10000], Loss: 0.000683, Perplexity: 1.00068, Batch Time:0.0063
+Batch Loss: Epoch [10], Batch [11000], Loss: 0.000885, Perplexity: 1.00089, Batch Time:0.0059
+Batch Loss: Epoch [10], Batch [12000], Loss: 0.000831, Perplexity: 1.00083, Batch Time:0.0081
+Batch Loss: Epoch [10], Batch [13000], Loss: 0.000757, Perplexity: 1.00076, Batch Time:0.0066
+Batch Loss: Epoch [10], Batch [14000], Loss: 0.000795, Perplexity: 1.00080, Batch Time:0.0060
+Batch Loss: Epoch [10], Batch [15000], Loss: 0.000836, Perplexity: 1.00084, Batch Time:0.0062
+Batch Loss: Epoch [10], Batch [16000], Loss: 0.000870, Perplexity: 1.00087, Batch Time:0.0062
+Batch Loss: Epoch [10], Batch [17000], Loss: 0.000787, Perplexity: 1.00079, Batch Time:0.0061
+Batch Loss: Epoch [10], Batch [18000], Loss: 0.000695, Perplexity: 1.00070, Batch Time:0.0061
+Batch Loss: Epoch [10], Batch [19000], Loss: 0.000874, Perplexity: 1.00087, Batch Time:0.0060
+Batch Loss: Epoch [10], Batch [20000], Loss: 0.001069, Perplexity: 1.00107, Batch Time:0.0061
+Batch Loss: Epoch [10], Batch [21000], Loss: 0.000621, Perplexity: 1.00062, Batch Time:0.0064
+Batch Loss: Epoch [10], Batch [22000], Loss: 0.000740, Perplexity: 1.00074, Batch Time:0.0061
+Batch Loss: Epoch [10], Batch [23000], Loss: 0.001075, Perplexity: 1.00108, Batch Time:0.0072
+Epoch Loss: Epoch [10], Loss: 0.000798, Perplexity: 1.00080, Epoch Time:9071.8873
+
+Evaluation:
+Valid Loss: Loss: 0.000869, Perplexity: 1.0009, Run Time:26.5604
+
+Batch Loss: Epoch [11], Batch [1000], Loss: 0.000802, Perplexity: 1.00080, Batch Time:0.0062
+Batch Loss: Epoch [11], Batch [2000], Loss: 0.000644, Perplexity: 1.00064, Batch Time:0.0067
+Batch Loss: Epoch [11], Batch [3000], Loss: 0.000760, Perplexity: 1.00076, Batch Time:0.0082
+Batch Loss: Epoch [11], Batch [4000], Loss: 0.001017, Perplexity: 1.00102, Batch Time:0.0065
+Batch Loss: Epoch [11], Batch [5000], Loss: 0.000736, Perplexity: 1.00074, Batch Time:0.0060
+Batch Loss: Epoch [11], Batch [6000], Loss: 0.000911, Perplexity: 1.00091, Batch Time:0.0062
+Batch Loss: Epoch [11], Batch [7000], Loss: 0.000873, Perplexity: 1.00087, Batch Time:0.0073
+Batch Loss: Epoch [11], Batch [8000], Loss: 0.000694, Perplexity: 1.00069, Batch Time:0.0063
+Batch Loss: Epoch [11], Batch [9000], Loss: 0.000765, Perplexity: 1.00077, Batch Time:0.0061
+Batch Loss: Epoch [11], Batch [10000], Loss: 0.000694, Perplexity: 1.00069, Batch Time:0.0061
+Batch Loss: Epoch [11], Batch [11000], Loss: 0.000904, Perplexity: 1.00090, Batch Time:0.0066
+Batch Loss: Epoch [11], Batch [12000], Loss: 0.000833, Perplexity: 1.00083, Batch Time:0.0061
+Batch Loss: Epoch [11], Batch [13000], Loss: 0.000714, Perplexity: 1.00071, Batch Time:0.0061
+Batch Loss: Epoch [11], Batch [14000], Loss: 0.000793, Perplexity: 1.00079, Batch Time:0.0060
+Batch Loss: Epoch [11], Batch [15000], Loss: 0.000874, Perplexity: 1.00087, Batch Time:0.0062
+Batch Loss: Epoch [11], Batch [16000], Loss: 0.000875, Perplexity: 1.00088, Batch Time:0.0059
+Batch Loss: Epoch [11], Batch [17000], Loss: 0.000783, Perplexity: 1.00078, Batch Time:0.0062
+Batch Loss: Epoch [11], Batch [18000], Loss: 0.000720, Perplexity: 1.00072, Batch Time:0.0063
+Batch Loss: Epoch [11], Batch [19000], Loss: 0.000879, Perplexity: 1.00088, Batch Time:0.0065
+Batch Loss: Epoch [11], Batch [20000], Loss: 0.001041, Perplexity: 1.00104, Batch Time:0.0062
+Batch Loss: Epoch [11], Batch [21000], Loss: 0.000599, Perplexity: 1.00060, Batch Time:0.0061
+Batch Loss: Epoch [11], Batch [22000], Loss: 0.000724, Perplexity: 1.00072, Batch Time:0.0062
+Batch Loss: Epoch [11], Batch [23000], Loss: 0.001097, Perplexity: 1.00110, Batch Time:0.0061
+Epoch Loss: Epoch [11], Loss: 0.000802, Perplexity: 1.00080, Epoch Time:8936.3724
+Batch Loss: Epoch [12], Batch [1000], Loss: 0.000834, Perplexity: 1.00083, Batch Time:0.0059
+Batch Loss: Epoch [12], Batch [2000], Loss: 0.000690, Perplexity: 1.00069, Batch Time:0.1154
+Batch Loss: Epoch [12], Batch [3000], Loss: 0.000785, Perplexity: 1.00079, Batch Time:0.0062
+Batch Loss: Epoch [12], Batch [4000], Loss: 0.000964, Perplexity: 1.00096, Batch Time:0.0060
+Batch Loss: Epoch [12], Batch [5000], Loss: 0.000730, Perplexity: 1.00073, Batch Time:0.0061
+Batch Loss: Epoch [12], Batch [6000], Loss: 0.000854, Perplexity: 1.00085, Batch Time:0.0060
+Batch Loss: Epoch [12], Batch [7000], Loss: 0.000889, Perplexity: 1.00089, Batch Time:0.0064
+Batch Loss: Epoch [12], Batch [8000], Loss: 0.000705, Perplexity: 1.00070, Batch Time:0.0062
+Batch Loss: Epoch [12], Batch [9000], Loss: 0.000791, Perplexity: 1.00079, Batch Time:0.0060
+Batch Loss: Epoch [12], Batch [10000], Loss: 0.000726, Perplexity: 1.00073, Batch Time:0.0058
+Batch Loss: Epoch [12], Batch [11000], Loss: 0.000916, Perplexity: 1.00092, Batch Time:0.0075
+Batch Loss: Epoch [12], Batch [12000], Loss: 0.000856, Perplexity: 1.00086, Batch Time:0.0058
+Batch Loss: Epoch [12], Batch [13000], Loss: 0.000742, Perplexity: 1.00074, Batch Time:0.0061
+Batch Loss: Epoch [12], Batch [14000], Loss: 0.000784, Perplexity: 1.00078, Batch Time:0.0062
+Batch Loss: Epoch [12], Batch [15000], Loss: 0.000887, Perplexity: 1.00089, Batch Time:0.0061
+Batch Loss: Epoch [12], Batch [16000], Loss: 0.000927, Perplexity: 1.00093, Batch Time:0.0058
+Batch Loss: Epoch [12], Batch [17000], Loss: 0.000813, Perplexity: 1.00081, Batch Time:0.0060
+Batch Loss: Epoch [12], Batch [18000], Loss: 0.000734, Perplexity: 1.00073, Batch Time:0.0060
+Batch Loss: Epoch [12], Batch [19000], Loss: 0.000879, Perplexity: 1.00088, Batch Time:0.0058
+Batch Loss: Epoch [12], Batch [20000], Loss: 0.001049, Perplexity: 1.00105, Batch Time:0.0057
+Batch Loss: Epoch [12], Batch [21000], Loss: 0.000603, Perplexity: 1.00060, Batch Time:0.0057
+Batch Loss: Epoch [12], Batch [22000], Loss: 0.000771, Perplexity: 1.00077, Batch Time:0.0057
+Batch Loss: Epoch [12], Batch [23000], Loss: 0.001107, Perplexity: 1.00111, Batch Time:0.0058
+Epoch Loss: Epoch [12], Loss: 0.000816, Perplexity: 1.00082, Epoch Time:8599.8878
+
+Evaluation:

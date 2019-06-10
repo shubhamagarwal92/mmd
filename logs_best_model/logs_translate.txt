@@ -1,0 +1,69 @@
+{u'training': {u'plot_every': 4, u'clip_grad': 3, u'evaluate_every': 2, u'log_every': 1000, u'save_every': 1, u'seed': 100, u'lr': 0.0004, u'use_cuda': True, u'num_epochs': 15, u'optimizer': u'adam', u'lr_decay': 0}, u'data': {u'sys_end_id': 5, u'unk_id': 1, u'end_id': 3, u'sys_start_id': 4, u'start_id': 2, u'user_start_id': 2, u'batch_size': 64, u'image_rep_size': 4096, u'context_size': 2, u'user_end_id': 3, u'pad_id': 0}, u'model': {u'non_linearity': u'tanh', u'decode_function': u'softmax', u'src_emb_dim': 512, u'bidirectional_context': False, u'dropout_context': 0.3, u'dec_type': u'GRU', u'context_type': u'GRU', u'num_enc_layers': 1, u'dropout_dec': 0.3, u'tgt_emb_dim': 512, u'max_decode_len': 20, u'bidirectional_enc': True, u'dropout_enc': 0.3, u'num_dec_layers': 1, u'enc_type': u'GRU', u'dec_hidden_size': 512, u'context_hidden_size': 512, u'use_attention': True, u'image_in_size': 20480, u'num_context_layers': 1, u'enc_hidden_size': 512}}
+kb_encoder.embedding.weight
+kb_encoder.encoder.weight_ih_l0
+kb_encoder.encoder.weight_hh_l0
+kb_encoder.encoder.bias_ih_l0
+kb_encoder.encoder.bias_hh_l0
+celeb_encoder.embedding.weight
+celeb_encoder.encoder.weight_ih_l0
+celeb_encoder.encoder.weight_hh_l0
+celeb_encoder.encoder.bias_ih_l0
+celeb_encoder.encoder.bias_hh_l0
+encoder.embedding.weight
+encoder.encoder.weight_ih_l0
+encoder.encoder.weight_hh_l0
+encoder.encoder.bias_ih_l0
+encoder.encoder.bias_hh_l0
+encoder.encoder.weight_ih_l0_reverse
+encoder.encoder.weight_hh_l0_reverse
+encoder.encoder.bias_ih_l0_reverse
+encoder.encoder.bias_hh_l0_reverse
+image_encoder.image_proj_layer.weight
+bridge.proj_layer.weight
+bridge.proj_layer.bias
+context_encoder.contextRNN.weight_ih_l0
+context_encoder.contextRNN.weight_hh_l0
+context_encoder.contextRNN.bias_ih_l0
+context_encoder.contextRNN.bias_hh_l0
+decoder.rnncell.weight_ih_l0
+decoder.rnncell.weight_hh_l0
+decoder.rnncell.bias_ih_l0
+decoder.rnncell.bias_hh_l0
+decoder.attention.linear_attn.weight
+decoder.out.weight
+decoder.out.bias
+MultimodalHRED(
+  (kb_encoder): KbEncoder(
+    (embedding): Embedding(10296, 512)
+    (encoder): GRU(512, 512, batch_first=True)
+  )
+  (celeb_encoder): KbEncoder(
+    (embedding): Embedding(318, 512)
+    (encoder): GRU(512, 512, batch_first=True)
+  )
+  (encoder): EncoderRNN(
+    (embedding): Embedding(7452, 512)
+    (encoder): GRU(512, 256, batch_first=True, dropout=0.3, bidirectional=True)
+  )
+  (image_encoder): ImageEncoder(
+    (image_proj_layer): Linear(in_features=20480, out_features=512, bias=False)
+  )
+  (bridge): BridgeLayer(
+    (proj_layer): Linear(in_features=256, out_features=512, bias=True)
+  )
+  (context_encoder): ContextRNN(
+    (contextRNN): GRU(1024, 512, batch_first=True, dropout=0.3)
+  )
+  (decoder): DecoderRNN(
+    (embedding): Embedding(7452, 512)
+    (rnncell): GRU(2048, 512, batch_first=True, dropout=0.3)
+    (attention): AttentionLayer(
+      (linear_attn): Linear(in_features=1024, out_features=512, bias=False)
+      (normalize): Softmax()
+      (non_linearity): Tanh()
+    )
+    (out): Linear(in_features=512, out_features=7452, bias=True)
+    (softmax): Softmax()
+    (sigmoid): Sigmoid()
+  )
+)
