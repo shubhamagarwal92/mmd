@@ -273,10 +273,10 @@ def main(args):
 			n_words = dec_seq_length.float().sum().data[0]
 			n_total_words += n_words
 			loss.backward()
+			# Gradient clipping to avoid exploding gradients
+			nn.utils.clip_grad_norm(model.parameters(), config['training']['clip_grad'])			
 			optimizer.step()
 			# exp_lr_scheduler.step()
-			# Gradient clipping to avoid exploding gradients
-			nn.utils.clip_grad_norm(model.parameters(), config['training']['clip_grad'])
 			batch_elapsed = (time.time() - batch_start)/60
 			batch_loss = loss.data[0]/n_words # @TODO
 			if (batch_id+1) % config['training']['log_every'] == 0:
