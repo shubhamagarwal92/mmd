@@ -36,6 +36,8 @@ Running as `bash dialogue_data.sh` will call the python files in the same folder
 
 Alternatively you can also download the data for context of 2 and 5 (as well as pickled Shah et al. data) that we used for training from this [link](https://www.dropbox.com/s/yz31j1zd3vvjwrw/data.zip?dl=0).
 
+Update: we are also providing the raw catalog, chat transcripts and metadata provided by Shah et al. [here](https://www.dropbox.com/s/s60owkgdv6glmuz/mmd_data.tar.gz?dl=0) All copyrights regarding the catalog and chat transcripts rests with them. Please contact them for further information. 
+
 ## Training
 
 Run `bash train_and_translate.sh` for training as well as generating on the test set. This script at the end also computes the final metrics on the test set.
