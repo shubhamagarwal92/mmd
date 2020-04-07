@@ -1,6 +1,6 @@
 # mmd
 
-This repository contains the Pytorch imlepementation used for our submission
+This repository contains the Pytorch implementation used for our submission
 
 - [A Knowledge-Grounded Multimodal Search-Based Conversational Agent](https://arxiv.org/pdf/1810.11954.pdf) SCAI@EMNLP 2018
 - [Improving Context Modelling in Multimodal Dialogue Generation](https://arxiv.org/pdf/1810.11955.pdf) INLG 2018
