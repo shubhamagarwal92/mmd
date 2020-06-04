@@ -129,6 +129,7 @@ def evaluate(valid_pkl_path, loss_criterion, model, config, vocab_size, annoyInd
 	print('Valid Loss: Loss: %.6f, Perplexity: %5.4f, Run Time:%5.4f'
 		  %(epoch_loss, np.exp(epoch_loss), valid_elapsed))
 	print("")
+	model.train()
 
 def main(args):
 	config = utils.read_json_config(args.config_file_path)
